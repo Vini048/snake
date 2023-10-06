@@ -32,12 +32,12 @@ body {
 
 /* Estiliza o corpo da cobra */
 .snake {
-    background-color: #ffff00; /* Define a cor de fundo da cobra como verde */
+    background-color: #00ff00;; /* Define a cor de fundo da cobra como verde */
 }
 
 /* Estiliza a comida */
 .food {
-    background-color: #00ff00; /* Define a cor de fundo da comida como vermelho */
+    background-color: #000ff; /* Define a cor de fundo da comida como vermelho */
 }
 
 /* Estiliza a pontuação */
