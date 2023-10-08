@@ -164,3 +164,60 @@ function gameLoop() {
 document.addEventListener('keydown', changeDirection);
 
 let gameInterval = setInterval(gameLoop, snakeSpeed); // Inicializa o loop do jogo com a velocidade inicial
+
+// função para carregar o recorde armazenado no localStorage
+function loadHighScore() {
+    const storedHighScore = localStorage.getItem('highScore');
+    return storedHighScore ? parseInt(storedHighScore) : 0;
+}
+
+
+function gameLoop() {
+    if (checkCollision()) {
+        clearInterval(gameInterval);
+        let message = 'Game Over! Sua Pontuação: ' + score;
+
+        const highScore = loadHighScore();
+        if (score === gridSize * gridSize - 1) {
+            message = 'Parabéns! Você venceu com pontuação máxima!';
+        } else if (score > highScore) {
+            localStorage.setItem('highScore', score);
+            message += ' Novo Recorde!';
+        }
+
+        alert(message);
+    } else {
+        changingDirection = false;
+        update();
+        draw();
+        displayScore();
+    }
+}
+// Novo recorde
+function displayHighScore() {
+    const highScore = loadHighScore();
+    alert('Recorde Atual: ' + highScore);
+}
+
+function gameLoop() {
+    if (checkCollision()) {
+        clearInterval(gameInterval);
+        let message = 'Game Over! Sua Pontuação: ' + score;
+
+        const highScore = loadHighScore();
+        if (score === gridSize * gridSize - 1) {
+            message = 'Parabéns! Você venceu com pontuação máxima!';
+        } else if (score > highScore) {
+            localStorage.setItem('highScore', score);
+            message += ' Novo Recorde!';
+        }
+
+        alert(message);
+        displayHighScore();
+    } else {
+        changingDirection = false;
+        update();
+        draw();
+        displayScore();
+    }
+}
